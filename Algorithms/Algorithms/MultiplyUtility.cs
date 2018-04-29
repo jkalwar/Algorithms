@@ -27,7 +27,7 @@ namespace Algorithms
             var str1 = a.ToCharArray();
             var str2 = b.ToCharArray();
 
-            string sumString = "";
+            StringBuilder sumString = new StringBuilder();
 
             var carry = 0;
 
@@ -42,7 +42,7 @@ namespace Algorithms
                     sum = sum % 10;
                 }
 
-                sumString = sum.ToString() + sumString;
+                sumString = new StringBuilder(sum.ToString()).Append(sumString);
                 l1--;
                 l2--;
             }
@@ -59,7 +59,7 @@ namespace Algorithms
                         temp = temp % 10;
                     }
 
-                    sumString = temp.ToString() + sumString;
+                    sumString = new StringBuilder(temp.ToString()).Append(sumString);
                     l2--;
                 }
 
@@ -77,7 +77,7 @@ namespace Algorithms
                         temp = temp % 10;
                     }
                     l1--;
-                    sumString = temp.ToString() + sumString;
+                    sumString = new StringBuilder(temp.ToString()).Append(sumString);
                 }
 
 
@@ -85,11 +85,11 @@ namespace Algorithms
 
             if (carry != 0)
             {
-                sumString = carry.ToString() + sumString;
+                sumString = new StringBuilder(carry.ToString()).Append(sumString);
                 carry = 0;
             }
 
-            return sumString;
+            return sumString.ToString();
 
         }
 
@@ -132,7 +132,7 @@ namespace Algorithms
                 }                
             }
 
-            string subString = "";
+            StringBuilder subString = new StringBuilder();
 
             var carry = 0;
 
@@ -143,12 +143,12 @@ namespace Algorithms
                 
                 if(p >= (q+carry))
                 {
-                    subString = (p - q - carry).ToString() + subString;
+                    subString = new StringBuilder ((p - q - carry).ToString()).Append(subString);
                     carry = 0;
                 }
                 else
                 {
-                    subString = (10 + p - q - carry).ToString() + subString;
+                    subString = new StringBuilder((10 + p - q - carry).ToString()).Append(subString);
                     carry = 1;
                 }
 
@@ -162,12 +162,12 @@ namespace Algorithms
                 {
                     if((int)Char.GetNumericValue(str1[l1-1]) >= carry)
                     {
-                        subString = ((int)Char.GetNumericValue(str1[l1 - 1]) - carry).ToString() + subString;
+                        subString = new StringBuilder(((int)Char.GetNumericValue(str1[l1 - 1]) - carry).ToString()).Append(subString);
                         carry = 0;
                     }
                     else
                     {
-                        subString = (10 + (int)Char.GetNumericValue(str1[l1 - 1]) - carry).ToString() + subString;
+                        subString = new StringBuilder((10 + (int)Char.GetNumericValue(str1[l1 - 1]) - carry).ToString()).Append(subString);
                         carry = 1;
                     }
                     l1--;
@@ -175,17 +175,18 @@ namespace Algorithms
             }
 
            
-            return subString;
+            return subString.ToString();
 
         }
 
         public string AppendZeros(int n , string str)
         {
+            var s = new StringBuilder(str);
             for(int i = 0; i < n; i++)
             {
-                str = str + "0";
+                s = s.Append("0");
             }
-            return str;
+            return s.ToString();
         }
         public string MultiplyTwoStrings(string num1, string num2)
         {
