@@ -23,6 +23,7 @@ namespace Algorithms
        
         static void Main(string[] args)
         {
+            /*
             var watch = System.Diagnostics.Stopwatch.StartNew();
             // the code that you want to measure comes here
            
@@ -35,6 +36,18 @@ namespace Algorithms
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
             Console.WriteLine("Elapsed Time "+elapsedMs );
+            Console.ReadLine();
+            */
+
+            Node root = new Node(10);
+            root.left = new Node(4);
+            root.right = new Node(5);
+
+            TreeOperations tree = new TreeOperations();
+            tree.InorderTraversal(root);
+            tree.PostOrderTraversal(root);
+            tree.PreOrderTraversal(root);
+
             Console.ReadLine();
         }
     }
